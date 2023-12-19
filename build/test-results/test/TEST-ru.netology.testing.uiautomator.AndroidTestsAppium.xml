@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.netology.testing.uiautomator.AndroidTestsAppium" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-12-19T06:58:14" hostname="Air-Natalia" time="26.205">
+  <properties/>
+  <testcase name="testNotChangeTextWithEmptyField()" classname="ru.netology.testing.uiautomator.AndroidTestsAppium" time="12.685"/>
+  <testcase name="testShouldOpenChangedTextInAnotherActivity()" classname="ru.netology.testing.uiautomator.AndroidTestsAppium" time="13.515"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[дек. 19, 2023 10:58:23 AM io.appium.java_client.remote.AppiumCommandExecutor$1 lambda$0
+INFO: Detected dialect: W3C
+дек. 19, 2023 10:58:35 AM io.appium.java_client.remote.AppiumCommandExecutor$1 lambda$0
+INFO: Detected dialect: W3C
+]]></system-err>
+</testsuite>
