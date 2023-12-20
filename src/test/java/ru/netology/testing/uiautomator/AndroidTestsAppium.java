@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
@@ -14,7 +15,6 @@ import java.net.URL;
 public class AndroidTestsAppium {
 
     private AndroidDriver driver;
-    private String startText = "Привет, UiAutomator!";
     private String emptyString = " ";
     private String textToChange = "Netology";
 
@@ -38,25 +38,27 @@ public class AndroidTestsAppium {
 
     @Test
     public void testNotChangeTextWithEmptyField() {
-        MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
-        el1.click();
-        el1.sendKeys(emptyString);
-        MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonChange");
+        MobileElement el1 = (MobileElement) driver.findElement(By.id("ru.netology.testing.uiautomator:id/textToBeChanged"));
+        String startText = el1.getText();
+        MobileElement el2 = (MobileElement) driver.findElement(By.id("ru.netology.testing.uiautomator:id/userInput"));
         el2.click();
-        MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/textToBeChanged");
-        el3.isDisplayed();
-        Assertions.assertEquals(el3.getText(), startText);
+        el2.sendKeys(emptyString);
+        MobileElement el3 = (MobileElement) driver.findElement(By.id("ru.netology.testing.uiautomator:id/buttonChange"));
+        el3.click();
+        MobileElement el4 = (MobileElement) driver.findElement(By.id("ru.netology.testing.uiautomator:id/textToBeChanged"));
+        el4.isDisplayed();
+        Assertions.assertEquals(el4.getText(), startText);
     }
 
     @Test
     public void testShouldOpenChangedTextInAnotherActivity() throws InterruptedException {
-        MobileElement el1 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/userInput");
+        MobileElement el1 = (MobileElement) driver.findElement(By.id("ru.netology.testing.uiautomator:id/userInput"));
         el1.click();
         el1.sendKeys(textToChange);
-        MobileElement el2 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/buttonActivity");
+        MobileElement el2 = (MobileElement) driver.findElement(By.id("ru.netology.testing.uiautomator:id/buttonActivity"));
         el2.click();
         Thread.sleep(2000);
-        MobileElement el3 = (MobileElement) driver.findElementById("ru.netology.testing.uiautomator:id/text");
+        MobileElement el3 = (MobileElement) driver.findElement(By.id("ru.netology.testing.uiautomator:id/text"));
         el3.isDisplayed();
         Assertions.assertEquals(el3.getText(), textToChange);
     }
